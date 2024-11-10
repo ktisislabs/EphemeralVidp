@@ -90,18 +90,18 @@ function App() {
             <div className="Community-div flex flex-col items-center mt-24">
               <h1 className="text-base md:text-lg font-urbanist font-medium">Join the Community</h1>
               <div className="flex items-center space-x-8 sm:space-x-12 lg:space-x-16 mt-2">
-                <span className="flex items-center space-x-2">
-                  <FaInstagram className="text-xl" /> 
+              <a href="https://www.instagram.com/ephemeralvidp/" target="_blank">  <span className="flex items-center space-x-2">
+                <FaInstagram className="text-xl" />
                   <p className="text-sm font-urbanist font-medium md:text-base">Instagram</p>
-                </span>
-                <span className="flex items-center space-x-2">
+                </span> </a> 
+           <a href="https://www.facebook.com/profile.php?id=61568454513601" target="_blank">   <span className="flex items-center space-x-2">
                   <FaFacebook className="text-xl sm:text-lg" /> 
                   <p className="text-sm font-urbanist font-medium md:text-base">Facebook</p>
-                </span>
-                <span className="flex items-center space-x-2">
-                  <FaLinkedin className="text-xl" /> 
+                </span>  </a>
+                <a href="https://www.linkedin.com/company/ephemeralvidp/" target="_blank"> <span className="flex items-center space-x-2">
+                <FaLinkedin className="text-xl" /> 
                   <p className="text-sm font-urbanist font-medium md:text-base">LinkedIn</p>
-                </span>
+                </span></a>
               </div>
             </div>
           </div>
