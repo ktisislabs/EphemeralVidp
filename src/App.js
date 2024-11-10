@@ -2,16 +2,43 @@ import { IoIosMail } from "react-icons/io";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 import Logo from '../src/Assets/logo-zici.png';
 import { useForm, ValidationError } from '@formspree/react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Ensure this is imported
+import { useState, useEffect } from 'react';
 
 function App() {
-  const [state, handleSubmit] = useForm("mqakaewg"); 
-  
-  if (state.succeeded) {
-    return alert("Thank you for registering! See you soon!");
-  }
+  const [state, handleSubmit] = useForm("mqakaewg");
+  const [hasToastShown, setHasToastShown] = useState(false); // New state to track toast
+
+  // Show toast only if the form is submitted successfully and toast hasn't been shown yet
+  useEffect(() => {
+    if (state.succeeded && !hasToastShown) {
+      toast.success("Thank you for registering! See you soon!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setHasToastShown(true); // Set state to true to prevent showing the toast again
+    }
+  }, [state.succeeded, hasToastShown]); // Dependencies to trigger effect when form is successfully submitted
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div
         className="Home-Container relative w-screen h-screen flex flex-col justify-between"
         style={{ backgroundColor: "#DFDCD6" }}
@@ -60,7 +87,7 @@ function App() {
             </form>
 
             {/* Join the Community Section */}
-            <div className="flex flex-col items-center mt-24">
+            <div className="Community-div flex flex-col items-center mt-24">
               <h1 className="text-base md:text-lg font-urbanist font-medium">Join the Community</h1>
               <div className="flex items-center space-x-8 sm:space-x-12 lg:space-x-16 mt-2">
                 <span className="flex items-center space-x-2">
@@ -68,7 +95,7 @@ function App() {
                   <p className="text-sm font-urbanist font-medium md:text-base">Instagram</p>
                 </span>
                 <span className="flex items-center space-x-2">
-                  <FaFacebook className="text-xl" /> 
+                  <FaFacebook className="text-xl sm:text-lg" /> 
                   <p className="text-sm font-urbanist font-medium md:text-base">Facebook</p>
                 </span>
                 <span className="flex items-center space-x-2">
@@ -81,7 +108,7 @@ function App() {
         </div>
 
         {/* Footer */}
-        <footer className="w-full text-left mt-4 mb-4 px-4 sm:px-6 md:px-8">
+        <footer className="Footer-div w-full text-left mt-4 mb-4 px-4 sm:px-6 md:px-8">
           <hr className="border-black mb-4" />
           <p className="font-urbanist text-xs sm:text-sm md:text-base">
             &copy; 2024 Ephemeral Vidp. All rights reserved.
